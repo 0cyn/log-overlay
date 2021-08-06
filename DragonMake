@@ -1,0 +1,27 @@
+---
+name: log-overlay
+icmd: killall -9 SpringBoard
+id: log-overlay
+depends: mobilesubstrate
+version: 1.0.0
+architecture: iphoneos-arm
+description: debugging overlay
+author: _kritanta
+section: Tweaks
+
+liblogoverlay:
+  type: library
+  files: 
+    - KDBManager.m 
+    - KDBOverlayView.m
+
+logoverlay:
+  type: tweak
+  files:
+    - Injection.x
+  libs:
+    - logoverlay
+  stage:
+    - mkdir -p .dragon/_/usr/lib
+    - cp liblogoverlay.dylib .dragon/_/usr/lib/
+    
