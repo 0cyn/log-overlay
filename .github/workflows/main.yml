@@ -14,4 +14,9 @@ jobs:
 
     steps:
     - name: dragon-build
-      uses: DragonBuild/build@0.0.4
+      uses: DragonBuild/build@0.0.5
+    - name: Uploading Packages
+      uses: actions/upload-artifact@v2.2.4
+      with:
+        name: packages.zip
+        path: packages/
