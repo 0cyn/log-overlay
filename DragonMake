@@ -17,11 +17,12 @@ liblogoverlay:
 
 logoverlay:
   type: tweak
+  cflags: -L./libs
   files:
     - Injection.x
   libs:
     - logoverlay
   stage:
     - mkdir -p .dragon/_/usr/lib
-    - cp liblogoverlay.dylib .dragon/_/usr/lib/
+    - cp ./libs/liblogoverlay.dylib .dragon/_/usr/lib/
     

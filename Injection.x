@@ -1,19 +1,24 @@
+#include <Foundation/Foundation.h>
+#include <UIKit/UIKit.h>
+
+#include <SpringBoard/SBHomeScreenViewController.h>
+
 #include "KDBManager.h"
 
 #define NSLog(...) [KDBManager.sharedInstance logString:[NSString stringWithFormat:__VA_ARGS__] file:__FILE__ line:__LINE__]
 
-@interface SBHomeScreenViewController : UIViewController
+
+@interface UISystemGestureView : UIView
 
 @end
 
-%hook SBHomeScreenViewController 
+%hook UISystemGestureView
 
--(void)loadView 
+-(void)movedToSuperview:(UIView *)view
 {
-    %orig;
-
+    %orig(view);
     
-    [self.view addSubview:[[KDBManager sharedInstance] overlayView]];
+    [view addSubview:[[KDBManager sharedInstance] overlayView]];
     [KDBManager.sharedInstance setupOverlayView];
     NSLog(@"Log Overlay Initialized");
 }
