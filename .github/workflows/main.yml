@@ -19,5 +19,5 @@ jobs:
     - name: Uploading Packages
       uses: actions/upload-artifact@v2.2.4
       with:
-        name: packages.zip
+        name: packages
         path: packages/
